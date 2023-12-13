@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const generateOptions = require('./utils/generateOptions')
+const generateReport = require('./utils/generateReport')
 
 const PORT = 3001;
 const app = express();
@@ -18,8 +19,9 @@ const db = mysql.createConnection (
     console.log("Connection successful")
 );
 
-const init = () => {
-    generateOptions.generateOptions();
+const init = async () => {
+    await generateOptions.generateOptions();
+    generateReport.generateReport(choice);
 }
 
 init();
