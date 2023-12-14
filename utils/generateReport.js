@@ -1,16 +1,26 @@
-const generateReport = (input) => {
+const mysql = require('mysql2');
+const db = mysql.createConnection (
+    {
+        host: 'localhost',
+        user: 'root',
+        password: 'H42DFa4kv^&n^X2wpd@P',
+        database: 'records_db'
+    }
+);
+
+const generateReport = async (input) => {
     let report = '';
     switch (input) {
         case 'View all departments':
-            report = ''
+            report = db.query('SELECT * FROM department', (err, results) => console.log(results));
             break;
 
         case 'View all roles':
-            report = ''
+            report = db.query('SELECT * FROM role', (err, results) => console.log(results));
             break;
 
         case 'View all employees':
-            report = ''
+            report = db.query('SELECT * FROM employee', (err, results) => console.log(results));
             break;
 
         case 'Add a department':
@@ -30,6 +40,7 @@ const generateReport = (input) => {
             break;
     }
 }
+
 
 module.exports = {
     generateReport,

@@ -15,13 +15,14 @@ const db = mysql.createConnection (
         user: 'root',
         password: 'H42DFa4kv^&n^X2wpd@P',
         database: 'records_db'
-    },
-    console.log("Connection successful")
+    }
 );
 
 const init = async () => {
-    await generateOptions.generateOptions();
-    generateReport.generateReport(choice);
+    const choice = await generateOptions.generateOptions();
+    // generateReport.generateReport(choice);
+
+
 }
 
 init();
