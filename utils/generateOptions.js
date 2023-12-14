@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
 
 // Generates initial menu of options for user to choose from 
-const generateOptions = () => {
-    return inquirer
+// Constructed with assistance from Xpert Learning Assistant
+const generateOptions = async () => {
+    const response = await inquirer
     .prompt(
         {
             type: 'list',
@@ -19,9 +20,9 @@ const generateOptions = () => {
                 'Exit'
             ]
         })
-    .then((response) => {
+
         const choice = response.options;
-        console.log(response.options)
+        console.log(response.options);
 
         // Switch statement to determine if more details are needed or the user would like to exit
         switch (choice) {
@@ -30,38 +31,40 @@ const generateOptions = () => {
                 break;
             
             case 'Add a department':
-                addDepartment();
+                const newDepartment = await addDepartment();
+                return newDepartment;
                 break;
 
             case 'Add a role':
-                addRole();
+                const newRole = await addRole();
+                return newRole;
                 break;
 
             case 'Add an employee':
-                addEmployee();
-                break;
-
+                const newEmployee= await addEmployee();
+                return newEmployee;
+                
             default:
                 return choice;
         }
-    })
+
 };
 
 // For getting the name of the new department to be added when 'add a department' is selected from the options menu
 const addDepartment = () => {
     return inquirer
-    .prompt(
+    .prompt([
         {
             type: 'input',
             message: 'Please provide a name for the new department.',
             name: 'departmentName'
         }
-    )
+    ])
     .then((response) => {
         const newDepartment = response.departmentName;
         console.log(newDepartment)
         return newDepartment;
-    })}
+    })};
 
 // For getting required details when the 'add a role' option is selected from the options menu
 const addRole = () => {
@@ -90,7 +93,7 @@ const addRole = () => {
         console.log(newRole);
         return newRole;
     })
-}
+};
 
 // For getting required details when the 'add an employee' option is selected from the options menu
 const addEmployee = () => {
@@ -120,11 +123,8 @@ const addEmployee = () => {
         return newEmployee;
     })
 
-}
+};
 
 module.exports = {
-    generateOptions,
-    addDepartment,
-    addRole,
-    addEmployee
+    generateOptions
 };
