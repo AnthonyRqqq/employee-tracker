@@ -21,29 +21,30 @@ const generateOptions = async () => {
             ]
         })
 
-        const choice = response.options;
-        console.log(response.options);
+        let choice = response.options;
+        choice = ['view', choice];
 
         // Switch statement to determine if more details are needed or the user would like to exit
         switch (choice) {
             case 'Exit':
                 return;
-                break;
+                
             
             case 'Add a department':
-                const newDepartment = await addDepartment();
+                let newDepartment = await addDepartment();
+                newDepartment = ['newDepartment', newDepartment]
                 return newDepartment;
-                break;
-
-            case 'Add a role':
-                const newRole = await addRole();
-                return newRole;
-                break;
-
-            case 'Add an employee':
-                const newEmployee= await addEmployee();
-                return newEmployee;
                 
+            case 'Add a role':
+                let newRole = await addRole();
+                newRole = ['newRole', newRole]
+                return newRole;
+                
+            case 'Add an employee':
+                let newEmployee= await addEmployee();
+                newEmployee = ['newEmployee', newEmployee]
+                return newEmployee;
+
             default:
                 return choice;
         }
@@ -62,7 +63,6 @@ const addDepartment = () => {
     ])
     .then((response) => {
         const newDepartment = response.departmentName;
-        console.log(newDepartment)
         return newDepartment;
     })};
 
@@ -90,7 +90,6 @@ const addRole = () => {
     ])
     .then((response) => {
         const newRole = response;
-        console.log(newRole);
         return newRole;
     })
 };
@@ -119,7 +118,6 @@ const addEmployee = () => {
     ])
     .then((response) => {
         const newEmployee = response;
-        console.log(newEmployee);
         return newEmployee;
     })
 
