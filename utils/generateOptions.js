@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 
-// Generates initial menu of options for user to choose from
+// Generates initial menu of options for user to choose from 
 const generateOptions = () => {
     return inquirer
     .prompt(
@@ -22,12 +22,27 @@ const generateOptions = () => {
     .then((response) => {
         const choice = response.options;
         console.log(response.options)
-        if (choice === 'Exit') {
-            return;
-        } else if (choice === 'Add a department') {
-            addDepartment();
-        } else {
-            return choice;
+
+        // Switch statement to determine if more details are needed or the user would like to exit
+        switch (choice) {
+            case 'Exit':
+                return;
+                break;
+            
+            case 'Add a department':
+                addDepartment();
+                break;
+
+            case 'Add a role':
+                addRole();
+                break;
+
+            case 'Add an employee':
+                addEmployee();
+                break;
+
+            default:
+                return choice;
         }
     })
 };
