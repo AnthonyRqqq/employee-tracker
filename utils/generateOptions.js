@@ -25,11 +25,8 @@ const generateOptions = async () => {
         choice = ['view', choice];
 
         // Switch statement to determine if more details are needed or the user would like to exit
-        switch (choice) {
-            case 'Exit':
-                return;
-                
-            
+        switch (choice.at(1)) {
+
             case 'Add a department':
                 let newDepartment = await addDepartment();
                 newDepartment = ['newDepartment', newDepartment]

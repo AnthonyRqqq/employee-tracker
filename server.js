@@ -21,7 +21,21 @@ const db = mysql.createConnection (
 const init = async () => {
     const choice = await generateOptions.generateOptions();
     console.log(choice);
-    // generateReport.generateReport(choice);
+    // Ends function if user selects exit
+    if (choice.at(1) === 'Exit') {
+        return;
+    }
+    
+    const report = await generateReport.generateReport(choice);
+    console.log(report)
+
+    db.query(`${report}`, (err, results) => {
+        if (err) {
+            console.log(error);
+        } else {
+            console.log(results);
+        }
+    })
 
 
 }
