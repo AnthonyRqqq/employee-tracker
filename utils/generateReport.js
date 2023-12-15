@@ -1,13 +1,5 @@
-// const mysql = require('mysql2');
-// const db = mysql.createConnection (
-//     {
-//         host: 'localhost',
-//         user: 'root',
-//         password: 'H42DFa4kv^&n^X2wpd@P',
-//         database: 'records_db'
-//     }
-// );
 
+// Generates the query text for the database based on previous user selections
 const generateReport = (input) => {
     const selectedOption = input[0];
     const details = input[1];

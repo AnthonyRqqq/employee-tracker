@@ -22,7 +22,7 @@ const init = async () => {
     const choice = await generateOptions.generateOptions();
     console.log(choice);
     // Ends function if user selects exit
-    if (choice.at(1) === 'Exit') {
+    if (choice[1] === 'Exit') {
         return;
     }
     
@@ -34,6 +34,7 @@ const init = async () => {
             console.log(error);
         } else {
             console.log(results);
+            init();
         }
     })
 
