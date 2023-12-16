@@ -20,7 +20,6 @@ const db = mysql.createConnection (
 
 const init = async () => {
     const choice = await generateOptions.generateOptions();
-    console.log(choice);
     // Ends function if user selects exit
     if (choice[1] === 'Exit') {
         return;
@@ -37,8 +36,6 @@ const init = async () => {
             init();
         }
     })
-
-
-}
+};
 
 init();
