@@ -14,7 +14,8 @@ const db = mysql.createConnection (
         host: 'localhost',
         user: 'root',
         password: 'H42DFa4kv^&n^X2wpd@P',
-        database: 'records_db'
+        database: 'records_db',
+        
     }
 );
 
@@ -32,7 +33,7 @@ const init = async () => {
         if (err) {
             console.log(error);
         } else {
-            console.log(results);
+            console.table(results);
             init();
         }
     })
