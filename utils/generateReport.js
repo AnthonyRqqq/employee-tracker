@@ -36,6 +36,10 @@ const generateReport = (input) => {
         case 'newEmployee':
             report = `INSERT INTO employee (first_name, last_name, role_id) VALUES ("${details.firstName}", "${details.lastName}", ${details.employeeRoleId})`;
             break;
+
+        case 'updateEmployeeRole':
+            report = `UPDATE employee SET role_id = ${details.newRollId} WHERE id = ${details.employeeId}`;
+            break;
     }
 
     return report;
