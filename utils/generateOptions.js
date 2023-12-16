@@ -29,18 +29,23 @@ const generateOptions = async () => {
 
             case 'Add a department':
                 let newDepartment = await addDepartment();
-                newDepartment = ['newDepartment', newDepartment]
+                newDepartment = ['newDepartment', newDepartment];
                 return newDepartment;
                 
             case 'Add a role':
                 let newRole = await addRole();
-                newRole = ['newRole', newRole]
+                newRole = ['newRole', newRole];
                 return newRole;
                 
             case 'Add an employee':
                 let newEmployee= await addEmployee();
-                newEmployee = ['newEmployee', newEmployee]
+                newEmployee = ['newEmployee', newEmployee];
                 return newEmployee;
+
+            case 'Update an employee role':
+                let newEmployeeRole = await updateEmployeeRole();
+                newEmployeeRole = ['updateEmployeeRole', newEmployeeRole];
+                return newEmployeeRole;
 
             default:
                 return choice;
@@ -119,6 +124,28 @@ const addEmployee = () => {
     })
 
 };
+
+// For getting required details when the 'update an employee role' option is selected from the options menu
+const updateEmployeeRole = () => {
+    return inquirer
+    .prompt([
+        {
+            type: 'input',
+            message: 'Please provide the ID of the employee you would like to update.',
+            name: 'employeeId'
+        },
+
+        {
+            type: 'input',
+            message: 'Please input the new role_id number.',
+            name: 'newRollId'
+        }
+    ])
+    .then((response) => {
+        const newEmployeeRole = response;
+        return newEmployeeRole
+    })
+}
 
 module.exports = {
     generateOptions
