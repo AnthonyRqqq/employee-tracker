@@ -9,6 +9,7 @@ const generateReport = (input) => {
     let report = ''
     switch (selectedOption) {
         
+        // Additional switch case for simple view options
         case 'view':
             switch(details) {
                 case 'View all departments':
@@ -25,6 +26,7 @@ const generateReport = (input) => {
             }
         break;
         
+        // Switch cases to insert provided data into prepared statements
         case 'newDepartment':
             report = `INSERT INTO department (name) VALUES ("${details}")`;
             break;

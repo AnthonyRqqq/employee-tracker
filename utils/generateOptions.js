@@ -80,14 +80,14 @@ const addRole = () => {
 
         {
             type: 'input',
-            message: 'Please provide a salary amount (numbers only).',
+            message: 'Please provide a salary amount.',
             name: 'roleSalary'
         },
 
         {
             type: 'input',
             message: 'Please provide the department_id to associated with the new role.',
-            name: 'roleDptId'
+            name: 'roleDptId',
         }
     ])
     .then((response) => {

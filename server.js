@@ -1,3 +1,4 @@
+// Imports required modules
 const express = require('express');
 const mysql = require('mysql2');
 const generateOptions = require('./utils/generateOptions')
@@ -6,14 +7,17 @@ const generateReport = require('./utils/generateReport')
 const PORT = 3001;
 const app = express();
 
+// Installs middleware
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+// Creates connection to database
+// User password required, additional changes necessary if user is not root
 const db = mysql.createConnection (
     {
         host: 'localhost',
         user: 'root',
-        password: 'H42DFa4kv^&n^X2wpd@P',
+        password: '',
         database: 'records_db',
         
     }
